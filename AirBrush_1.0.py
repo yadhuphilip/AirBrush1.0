@@ -7,6 +7,10 @@ trail = []
 while True:
 
     _,frame = cap.read()
+    ## Fliping the image for the sake
+    frame = cv2.flip(frame, 1)
+
+
     blured = cv2.blur(frame, (10,10))
     hsv = cv2.cvtColor(blured,  cv2.COLOR_BGR2HSV)
 
