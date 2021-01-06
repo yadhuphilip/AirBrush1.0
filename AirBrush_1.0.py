@@ -27,10 +27,10 @@ while True:
         center = x +w//2 , y+ h//2
         trail.append((center))
         #cv2.rectangle(frame,(x,y),(x+w, y+h), (0,255,0), -1)
-        cv2.circle(frame, (center), 5, (0,255,0), -1)
+        cv2.circle(frame, (center), 8, (0,255,0), -1)
 
     for each in trail[0:-2]:
-        cv2.circle(frame, (each), 1, (0,0,255), -1)
+        cv2.circle(frame, (each), 3, (0,0,255), -1)
 
     cv2.imshow("frame", frame)
 
