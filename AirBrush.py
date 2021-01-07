@@ -3,6 +3,8 @@ import numpy as np
 
 
 cap = cv2.VideoCapture(0)
+cap.set(3,1280)
+cap.set(4,720)
 trail = []
 while True:
 
@@ -25,7 +27,7 @@ while True:
     #print(len(contours))
     #cv2.drawContours(frame, contours, -1, (0,255,0), 2)
     ##Strengthen the selection
-    if len(contours) > 0:
+    if len(contours) >  0  and cv2.contourArea(max(contours, key = cv2.contourArea)) > 1000:
         largest_contour = max(contours, key = cv2.contourArea)
         x,y,w,h = cv2.boundingRect(largest_contour)
         center = x +w//2 , y+ h//2
@@ -33,8 +35,8 @@ while True:
         #cv2.rectangle(frame,(x,y),(x+w, y+h), (0,255,0), -1)
         cv2.circle(frame, (center), 8, (0,255,0), -1)
 
-    for each in trail[0:-2]:
-        cv2.circle(frame, (each), 3, (0,0,255), -1)
+    for i in range(1,len(trail[:-1])):
+        cv2.line(frame, trail[i-1], trail[i], (0,0,255), 1)
 
     cv2.imshow("frame", frame)
 
